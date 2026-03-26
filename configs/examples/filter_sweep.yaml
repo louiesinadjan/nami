@@ -1,0 +1,18 @@
+# Example: wrist height controls filter cutoff, pinch controls resonance
+port_name: "Nami"
+camera_index: 0
+target_fps: 30
+
+mappings:
+  - gesture: wrist_elevation
+    cc: 74
+    smoothing: one_euro
+    smoothing_params: {min_cutoff: 1.0, beta: 0.005}
+    curve: s_curve
+    curve_params: {steepness: 8.0}
+
+  - gesture: pinch_distance
+    cc: 71
+    smoothing: one_euro
+    smoothing_params: {min_cutoff: 2.0, beta: 0.01}
+    curve: linear

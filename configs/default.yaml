@@ -1,0 +1,37 @@
+# Nami default configuration
+# Copy to ~/.config/nami/config.yaml to customise.
+
+# Virtual MIDI port name (appears in Logic's controller list)
+port_name: "Nami"
+
+# Webcam device index (0 = built-in/first camera)
+camera_index: 0
+
+# Target frames per second for the main loop
+target_fps: 30
+
+# Gesture-to-CC mappings
+# gesture:    one of wrist_elevation, finger_spread, palm_rotation, pinch_distance
+# cc:         MIDI CC number (0–127). Map this in Logic's Controller Assignments.
+# smoothing:  "one_euro" (recommended) or "ema"
+# curve:      "linear", "exponential", "s_curve", or "deadzone"
+# min_val/max_val: restrict the gesture range that maps to the full CC sweep
+
+mappings:
+  - gesture: wrist_elevation
+    cc: 74          # Filter cutoff (common convention)
+    smoothing: one_euro
+    smoothing_params:
+      min_cutoff: 1.0
+      beta: 0.007
+    curve: linear
+
+  - gesture: pinch_distance
+    cc: 71          # Filter resonance (common convention)
+    smoothing: one_euro
+    smoothing_params:
+      min_cutoff: 1.5
+      beta: 0.01
+    curve: exponential
+    curve_params:
+      exponent: 2.0

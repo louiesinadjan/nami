@@ -1,0 +1,12 @@
+# Example: hand spread controls reverb send amount
+port_name: "Nami"
+camera_index: 0
+target_fps: 30
+
+mappings:
+  - gesture: finger_spread
+    cc: 91          # Reverb send (common convention)
+    smoothing: one_euro
+    smoothing_params: {min_cutoff: 0.5, beta: 0.003}
+    curve: deadzone
+    curve_params: {low: 0.05, high: 0.95}
